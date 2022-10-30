@@ -58,24 +58,28 @@ public:
     }
 
     void display()const{
-        std::cout<<"name:"+getName();
-        std::cout<<"age:"+getAge();
-        std::cout<<"weight:"+getWeight();
-        std::cout<<"bestfriend's name:"+getBestfriendsName();
+        std::cout<<"\tname:"+getName()<<std::endl;
+        std::cout<<"\tage:"+to_string(getAge())<<std::endl;
+        std::cout<<"\tweight:" + to_string(getWeight())<<std::endl;
+        std::cout<<"\tbestfriend's name:"+getBestfriendsName()<<std::endl<<std::endl;
     }
 };
 
 int main(){
     Person *oreste= new Person("oreste",27,75,nullptr);
-    std::cout<<"The bestfriend of oreste is :"+ oreste->getBestfriendsName()<<std::endl;
+    oreste->display();
 
     Person *darlene= new Person("darlaine",20,55,oreste);
-    std::cout<<"The bestfriend of darlène is :"+ darlene->getBestfriendsName()<<std::endl;
+    darlene->display();
 
     Person *peace= new Person("peace",19,45,darlene);
-    std::cout<<"The bestfriend of peace is :"+ peace->getBestfriendsName()<<std::endl;
+    peace->display();
 
     /// if u change the name of darlene, from darlaine to darlène and display again peace, u will see that data in peace has changes as well,
     darlene->setName("darlène");
-    std::cout<<"The bestfriend of peace is :"+ peace->getBestfriendsName() <<std::endl;
+
+
+    std::cout<<"After making some modification in darlene, the display of peace and darlene were both changes,\nbecause the source changes, so everyone who refers to that sourcen will get a modified data as well"<<endl<<endl;
+    darlene->display();
+    peace->display();
 }
